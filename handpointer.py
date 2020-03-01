@@ -13,14 +13,14 @@ pts = deque(maxlen = 64)
 detection_graph, sess = detector_utils.load_inference_graph()
 
 
-score_thresh = 0.4
+score_thresh = 0.3
 fps = 1
 
 # 0 for internal web cam
 video_source = 0
 
 # caputer frame
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(video_source)
 
 start_time = datetime.datetime.now()
 num_frames = 0
@@ -31,7 +31,7 @@ im_width, im_height = (cap.get(3), cap.get(4))
 # max number of hands we want to detect/track
 num_hands_detect = 1
 
-cv2.namedWindow('Hand Detection', cv2.WINDOW_NORMAL)
+cv2.namedWindow('Hand Pointer', cv2.WINDOW_NORMAL)
 
 while True:
     # Expand dimensions since the model expects images to have shape: [1, None, None, 3]
@@ -46,18 +46,26 @@ while True:
     boxes, scores = detector_utils.detect_objects(
         image_np, detection_graph, sess)
 
+
+    # draw bounding boxes
+    # detector_utils.draw_box_on_image(
+    #     num_hands_detect, score_thresh, scores, boxes, im_width, im_height, image_np)
+
+
     # Draw Pointer trails
     
-    # If we detect hand
+    # If hand detected
     if(scores[0] > score_thresh):
         # calculate centroid
-        (left, right, top, bottom) = (boxes[0][1] * im_width, boxes[0][3] * im_width,boxes[0][0] * im_height, boxes[0][2] * im_height)
+        (left, right, top, bottom) = (boxes[0][1] * im_width, boxes[0][3] * im_width, boxes[0][0] * im_height, boxes[0][2] * im_height)
+        # calculate centroid points
         y = (bottom +top)/2
         x = (right + left)/2
-        print("detected")
-        # a fist OR exapnded hand
+        
+        # For detecting a fist OR open hand
         fist = (top-bottom)/(left-right)
-        center = (int(x), int(y))
+        # use y insted of top to get the pointer in center of hand (on plam)
+        center = (int(x), int(top))
         cv2.circle(image_np,  center, 5, (255, 25, 0), 10)
 
         # if it is not a fist OR expanded hand
@@ -89,7 +97,7 @@ while True:
         detector_utils.draw_fps_on_image(
             "FPS : " + str(int(fps)), image_np)
 
-    cv2.imshow('Hand Detection', cv2.cvtColor(
+    cv2.imshow('Hand Pointer', cv2.cvtColor(
         image_np, cv2.COLOR_RGB2BGR))
 
     if cv2.waitKey(25) & 0xFF == ord('q'):
