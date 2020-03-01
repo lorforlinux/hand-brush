@@ -15,7 +15,7 @@ fps = 1
 video_source = 0
 
 # caputer frame
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(video_source)
 
 start_time = datetime.datetime.now()
 num_frames = 0
