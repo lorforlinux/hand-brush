@@ -16,7 +16,7 @@ fps = 1
 video_source = 0
 
 # caputer frame
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(video_source)
 
 start_time = datetime.datetime.now()
 num_frames = 0
@@ -25,7 +25,7 @@ num_frames = 0
 im_width, im_height = (cap.get(3), cap.get(4))
 
 # max number of hands we want to detect/track
-num_hands_detect = 1
+num_hands_detect = 2
 cv2.namedWindow('Hand Detection', cv2.WINDOW_NORMAL)
 
 while True:
@@ -42,23 +42,23 @@ while True:
         image_np, detection_graph, sess)
 
     # Draw contours
-    
-    # If we detect hand
-    if(scores[0] > score_thresh):
-        (left, right, top, bottom) = (boxes[0][1] * im_width, boxes[0][3] * im_width,boxes[0][0] * im_height, boxes[0][2] * im_height)
-        # create a black frame
-        black = np.zeros((int(im_height), int(im_width), 3), np.uint8) 
-        # make the detected area white
-        black1 = cv2.rectangle(black,(int(left),int(top)),(int(right),int(bottom)),(255, 255, 255), -1)
-        gray = cv2.cvtColor(black,cv2.COLOR_BGR2GRAY) 
-        ret,b_mask = cv2.threshold(gray,127,255, 0) 
-        # get the hand data
-        fin = cv2.bitwise_and(black1, image_np, mask = b_mask)
-        output = cv2.Canny(fin, 100, 200)
-        # get the contours
-        image, contours, hierarchy = cv2.findContours(output, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-        # draw contours
-        image = cv2.drawContours(image_np, contours, -1, (0, 255, 0), 2)
+    for i in range(num_hands_detect):
+        # If we detect hand
+        if(scores[i] > score_thresh):
+            (left, right, top, bottom) = (boxes[i][1] * im_width, boxes[i][3] * im_width,boxes[i][0] * im_height, boxes[i][2] * im_height)
+            # create a black frame
+            black = np.zeros((int(im_height), int(im_width), 3), np.uint8) 
+            # make the detected area white
+            black1 = cv2.rectangle(black,(int(left),int(top)),(int(right),int(bottom)),(255, 255, 255), -1)
+            gray = cv2.cvtColor(black,cv2.COLOR_BGR2GRAY) 
+            ret,b_mask = cv2.threshold(gray,127,255, 0) 
+            # get the hand data
+            fin = cv2.bitwise_and(black1, image_np, mask = b_mask)
+            output = cv2.Canny(fin, 100, 200)
+            # get the contours
+            image, contours, hierarchy = cv2.findContours(output, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+            # draw contours
+            image = cv2.drawContours(image_np, contours, -1, (0, 255, 0), 2)
 
 
     # Calculate Frames per second (FPS)
