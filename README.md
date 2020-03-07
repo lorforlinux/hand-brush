@@ -69,11 +69,12 @@ If you want to learn how does it work internally, the best way is to follow the 
 
 
 <break>
+
 `If you find any issue in the code OR want any help please create an issue in the issue tracker :)`
+
 <break>
 
 ## References
----
 1. https://github.com/EvilPort2/Hand-Tracking
 2. https://github.com/acl21/Webcam_Paint_OpenCV
 3. https://github.com/akshaybahadur21/HandMovementTracking
