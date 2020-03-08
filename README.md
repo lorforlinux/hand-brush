@@ -3,15 +3,34 @@ Machine learning paint program that uses your hand as a brush!
 
 <break>
 
-`Note: Demos (gifs) will take a bit of time to load coz they are heavy 🧸`
+```
 
-<brek>
+Note:
+
+1. Demos (gifs) will take a bit of time to load coz they are heavy 🧸`
+
+2. You are required to install tensorflow-2.0, opencv, numpy and other python libraries to get this application to work.
+
+3. To run the notebooks locally you are required to install Jupyter-noteebok OR Jupyter-lab.
+
+4. Although python2 is deprecated, If you have both python2 and python3 installed replace python with python3 for running the application and demos.
+```
+
+<break>
 
 
 ###  Demo of the program!
 ---
 For hand traking my application here is using the pretrained ``SSD with MobilenetV1` model from [EvilPort2](https://github.com/EvilPort2)'s
 hand tracking [repository](https://github.com/EvilPort2/Hand-Tracking). The paint toolbox uses the code from [acl21](https://github.com/acl21)'s Webcam Paint OpenCV [repository](https://github.com/acl21/Webcam_Paint_OpenCV). Hand Brush program is truly a combination of those two repositories and i highly recommend you to check out their repositories 🦔
+
+<break>
+
+```
+# for running hand brush program
+
+python handbrush.py
+```
 
 <break>
 
@@ -28,6 +47,20 @@ hand tracking [model](https://github.com/EvilPort2/Hand-Tracking) but you can al
 
 <break>
 
+```
+# for running hand detection demo
+
+python handdetect.py
+
+OR
+
+python detect_single_threaded.py
+
+
+```
+
+<break>
+
 ![hand detect demo][detect]
 
 <break>
@@ -39,13 +72,29 @@ This demo uses the [akshaybahadur21](https://github.com/akshaybahadur21)'s Hand 
 
 <break>
 
+```
+# for running hand pointer demo
+
+python handpointer.py
+```
+
+<break>
+
 ![pointer demo][pointer]
 
 <break>
 
 ### Contour demo!
 ---
-This one is just for fun and learning [How can I find contours inside ROI using opencv and Python?](https://stackoverflow.com/questions/42004652/how-can-i-find-contours-inside-roi-using-opencv-and-python)
+This one is just for fun and learning [How can I find contours inside ROI using opencv and Python?](https://stackoverflow.com/questions/42004652/how-can-i-find-contours-inside-roi-using-opencv-and-python).
+
+<break>
+
+```
+# for running contour demo
+
+python handcontour.py
+```
 
 <break>
 
