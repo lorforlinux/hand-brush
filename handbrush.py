@@ -81,6 +81,25 @@ while True:
     image_np = cv2.rectangle(image_np, (x_shift+275,y_shift+1), (x_shift+370,y_shift+65), colors[1], -1)
     image_np = cv2.rectangle(image_np, (x_shift+390,y_shift+1), (x_shift+485,y_shift+65), colors[2], -1)
     image_np = cv2.rectangle(image_np, (x_shift+505,y_shift+1), (x_shift+600,y_shift+65), colors[3], -1)
+
+    # For showing a bar over selected color
+    
+    # For color
+    if colorIndex == 0:
+        image_np = cv2.rectangle(image_np, (x_shift+160, 30), (x_shift+255, 35), colors[0], -1)
+    
+    # For color
+    if colorIndex == 1:
+        image_np = cv2.rectangle(image_np, (x_shift+275, 30), (x_shift+370, 35), colors[1], -1)
+    
+    # For color
+    if colorIndex == 2:
+        image_np = cv2.rectangle(image_np, (x_shift+390, 30), (x_shift+485, 35), colors[2], -1)
+    
+    # For color
+    if colorIndex == 3:
+        image_np = cv2.rectangle(image_np, (x_shift+505, 30), (x_shift+600, 35), colors[3], -1)
+
     cv2.putText(image_np, "CLEAR ALL", (x_shift+49, y_shift+33), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
     cv2.putText(image_np, "BLUE", (x_shift+185,y_shift+ 33), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
     cv2.putText(image_np, "GREEN", (x_shift+298,y_shift+ 33), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
@@ -103,38 +122,40 @@ while True:
             cv2.circle(image_np,  center, 5, colors[colorIndex], 10)
 
             # if it's a straight hand and not a fist or open hand
+            
+            if center[1] <= y_shift+65:
+                if x_shift+40 <= center[0] <= x_shift+140: # Clear All
+                    bpoints = [deque(maxlen=512)]
+                    gpoints = [deque(maxlen=512)]
+                    rpoints = [deque(maxlen=512)]
+                    ypoints = [deque(maxlen=512)]
+
+                    bindex = 0
+                    gindex = 0
+                    rindex = 0
+                    yindex = 0
+
+                elif x_shift+160 <= center[0] <= x_shift+255:
+                        colorIndex = 0 # Blue
+                elif x_shift+275 <= center[0] <= x_shift+370:
+                        colorIndex = 1 # Green
+                elif x_shift+390 <= center[0] <= x_shift+485:
+                        colorIndex = 2 # Red
+                elif x_shift+505 <= center[0] <= x_shift+600:
+                        colorIndex = 3 # Yellow
+                        
+            # drawing 
             if fist>fist_thresh:
-                if center[1] <= y_shift+65:
-                    if x_shift+40 <= center[0] <= x_shift+140: # Clear All
-                        bpoints = [deque(maxlen=512)]
-                        gpoints = [deque(maxlen=512)]
-                        rpoints = [deque(maxlen=512)]
-                        ypoints = [deque(maxlen=512)]
+                if colorIndex == 0:
+                    bpoints[bindex].appendleft(center)
+                elif colorIndex == 1:
+                    gpoints[gindex].appendleft(center)
+                elif colorIndex == 2:
+                    rpoints[rindex].appendleft(center)
+                elif colorIndex == 3:
+                    ypoints[yindex].appendleft(center)
 
-                        bindex = 0
-                        gindex = 0
-                        rindex = 0
-                        yindex = 0
-
-                    elif x_shift+160 <= center[0] <= x_shift+255:
-                            colorIndex = 0 # Blue
-                    elif x_shift+275 <= center[0] <= x_shift+370:
-                            colorIndex = 1 # Green
-                    elif x_shift+390 <= center[0] <= x_shift+485:
-                            colorIndex = 2 # Red
-                    elif x_shift+505 <= center[0] <= x_shift+600:
-                            colorIndex = 3 # Yellow
-                else :
-                    if colorIndex == 0:
-                        bpoints[bindex].appendleft(center)
-                    elif colorIndex == 1:
-                        gpoints[gindex].appendleft(center)
-                    elif colorIndex == 2:
-                        rpoints[rindex].appendleft(center)
-                    elif colorIndex == 3:
-                        ypoints[yindex].appendleft(center)
-
-            # if it is not a fist (OR expanded hand)
+            # not drawing
             else:
                 bpoints.append(deque(maxlen=512))
                 bindex += 1
