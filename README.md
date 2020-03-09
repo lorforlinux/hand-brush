@@ -8,11 +8,14 @@ Note:
 
 1. Demos (gifs) will take a bit of time to load coz they are heavy 🧸`
 
-2. You are required to install tensorflow-2.0, opencv, numpy and other python libraries to get this application to work.
+2. You are required to install tensorflow-2.0, opencv, numpy and other
+  python libraries to get this application to work.
 
-3. To run the notebooks locally you are required to install Jupyter-noteebok OR Jupyter-lab.
+3. To run the notebooks locally you are required to install Jupyter-noteebok
+  OR Jupyter-lab.
 
-4. Although python2 is deprecated, If you have both python2 and python3 installed replace python with python3 for running the application and demos.
+4. Although python2 is deprecated, If you have both python2 and python3 installed 
+  replace python with python3 for running the application and demos.
 ```
 
 <br>
