@@ -1,7 +1,6 @@
 # Hand Brush 🖌️
 Machine learning paint program that uses your hand as a brush!
 
-<break>
 
 ```
 
@@ -16,7 +15,7 @@ Note:
 4. Although python2 is deprecated, If you have both python2 and python3 installed replace python with python3 for running the application and demos.
 ```
 
-<break>
+<br>
 
 
 ###  Demo of the program!
@@ -24,7 +23,6 @@ Note:
 For hand traking my application here is using the pretrained ``SSD with MobilenetV1` model from [EvilPort2](https://github.com/EvilPort2)'s
 hand tracking [repository](https://github.com/EvilPort2/Hand-Tracking). The paint toolbox uses the code from [acl21](https://github.com/acl21)'s Webcam Paint OpenCV [repository](https://github.com/acl21/Webcam_Paint_OpenCV). Hand Brush program is truly a combination of those two repositories and i highly recommend you to check out their repositories 🦔
 
-<break>
 
 ```
 # for running hand brush program
@@ -32,11 +30,13 @@ hand tracking [repository](https://github.com/EvilPort2/Hand-Tracking). The pain
 python handbrush.py
 ```
 
-<break>
+
+Watch the demo with updated tool box [here](https://www.youtube.com/watch?v=Pnr-YD98XYo&feature=youtu.be).
+
 
 ![paint program demo][paint]
 
-<break>
+<br>
 
 
 ### Hand detection demo!
@@ -44,8 +44,6 @@ python handbrush.py
 
 This demo uses [EvilPort2](https://github.com/EvilPort2)'s
 hand tracking [model](https://github.com/EvilPort2/Hand-Tracking) but you can also try the [victordibia](https://github.com/victordibia)'s hand tracking [model](https://github.com/victordibia/handtracking). I tried both and got better result from the first one.
-
-<break>
 
 ```
 # for running hand detection demo
@@ -55,22 +53,18 @@ python handdetect.py
 OR
 
 python detect_single_threaded.py
-
-
 ```
-
-<break>
 
 ![hand detect demo][detect]
 
-<break>
+
+<br>
 
 
 ### Hand pointer demo!
 ---
 This demo uses the [akshaybahadur21](https://github.com/akshaybahadur21)'s Hand Movement Tracking [code](https://github.com/akshaybahadur21/HandMovementTracking) for creating the pointer trail.
 
-<break>
 
 ```
 # for running hand pointer demo
@@ -78,17 +72,15 @@ This demo uses the [akshaybahadur21](https://github.com/akshaybahadur21)'s Hand 
 python handpointer.py
 ```
 
-<break>
 
 ![pointer demo][pointer]
 
-<break>
+
+<br>
 
 ### Contour demo!
 ---
 This one is just for fun and learning [How can I find contours inside ROI using opencv and Python?](https://stackoverflow.com/questions/42004652/how-can-i-find-contours-inside-roi-using-opencv-and-python).
-
-<break>
 
 ```
 # for running contour demo
@@ -96,11 +88,10 @@ This one is just for fun and learning [How can I find contours inside ROI using 
 python handcontour.py
 ```
 
-<break>
+![pointer demo][pointer]
 
-![pointer demo][contour]
 
-<break>
+<br>
 
 ### Jupyter Notebooks
 ---
@@ -117,11 +108,12 @@ If you want to learn how does it work internally, the best way is to follow the 
 
 
 
-<break>
+<br>
 
 `If you find any issue in the code OR want any help please create an issue in the issue tracker :)`
 
-<break>
+<br>
+
 
 ## References
 1. https://github.com/EvilPort2/Hand-Tracking
@@ -137,3 +129,4 @@ If you want to learn how does it work internally, the best way is to follow the 
 [contour]: ./assets/contour.gif "contour demo"
 [pointer]: ./assets/pointer.gif "pointer demo"
 [notebooks]: ./assets/notebooks.png "contour demo"
+
