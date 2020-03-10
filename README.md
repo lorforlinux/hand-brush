@@ -6,7 +6,7 @@ Machine learning paint program that uses your hand as a brush!
 
 Note:
 
-1. Demos (gifs) will take a bit of time to load coz they are heavy 🧸`
+1. Demos (gifs) will take a bit of time to load coz they are heavy 🧸
 
 2. You are required to install tensorflow-2.0, opencv, numpy and other
   python libraries to get this application to work.
@@ -91,7 +91,7 @@ This one is just for fun and learning [How can I find contours inside ROI using 
 python handcontour.py
 ```
 
-![pointer demo][pointer]
+![pointer demo][contour]
 
 
 <br>
