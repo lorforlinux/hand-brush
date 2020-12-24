@@ -11,7 +11,7 @@ Note:
 2. You are required to install tensorflow-2.0, opencv, numpy and other
   python libraries to get this application to work.
 
-3. To run the notebooks locally you are required to install Jupyter-noteebok
+3. To run the notebooks locally you are required to install Jupyter-notebook
   OR Jupyter-lab.
 
 4. Although python2 is deprecated, If you have both python2 and python3 installed 
